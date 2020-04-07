@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
     end
     
     def show 
-        @recipe = Recipe.find_by(id: params[:id])
+        @recipe = Recipe.find(params[:id])
     end
 
     def new 
@@ -13,18 +13,20 @@ class RecipesController < ApplicationController
 
     def create 
         recipe = Recipe.create(recipe_params)
-        redirect_to edit_recipe_path
+        binding.pry
+        redirect_to recipe_path
     end
 
     def edit
         @recipe = Recipe.find(params[:id])
     end 
 
-
-
-    private 
+   private
     def recipe_params
-        params.require(:title).permit(
-            :content)
+        params.require(:recipe).permit(
+            :title,
+            :content,
+            :ingredients
+          )
     end
 end
