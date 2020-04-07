@@ -8,13 +8,13 @@ class RecipesController < ApplicationController
     end
 
     def new 
-        @recipe = Recipe.new
+        @recipe = Recipe.new        
     end
 
     def create 
-        recipe = Recipe.create(recipe_params)
-        binding.pry
-        redirect_to recipe_path
+        @recipe = Recipe.create(recipe_params)
+      #  binding.pry
+        redirect_to recipe_path(@recipe)
     end
 
     def edit
