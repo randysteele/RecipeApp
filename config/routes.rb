@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :users
   root 'sessions#home'
-  get '/signup' => 'users#show'
+  get '/signup' => 'users#new'
   post '/signup' => 'users#create'
   delete '/logout' => 'sessions#delete'
 

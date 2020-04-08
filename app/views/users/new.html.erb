@@ -1,12 +1,14 @@
-<h2> Signup</h2>
+<h2> Signup to create a recipe </h2>
 
 
 <%= form_for(@user) do |f|%>
     
+    <%= f.label :username %>
+    <%= f.email_field :username %><br>
     <%= f.label :email %>
     <%= f.email_field :email %><br>
     <%= f.label :password %>
     <%= f.password_field :password %><br>
-    <%= f.submit "Submit" %>
+    <%= f.submit "Signup" %>
 
     <% end %> 
