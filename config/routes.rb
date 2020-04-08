@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :sessions
   resources :recipes
   resources :ingredients
   resources :users
-  # root 'sessions#home'
+  root 'sessions#home'
+  get '/signup' => 'users#show'
+  post '/signup' => 'users#create'
+  delete '/logout' => 'sessions#delete'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

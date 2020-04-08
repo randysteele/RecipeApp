@@ -1,3 +1,4 @@
-<h3> Users Show Page </h3>
+<h3> Welcome <%=@user.email%> </h3>
 
-<%= @user.email %> 
+
+<%= link_to "Logout", logout_path, method: "delete" %>
