@@ -3,6 +3,15 @@ class RecipesController < ApplicationController
         @recipe = Recipe.new        
     end
 
+    def create 
+        @recipe = current_user.recipes.build(recipe_params)
+        if @recipe.save 
+        redirect_to recipes_path      
+        else
+            render :new  
+        end
+    end
+
     def index 
         @recipes = Recipe.all 
     end
@@ -11,11 +20,6 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find(params[:id])
     end
   
-
-    def create 
-        @recipe = Recipe.create(recipe_params)
-        redirect_to recipes_path        
-    end
 
     def edit
         @recipe = Recipe.find(params[:id])
