@@ -1,2 +1,9 @@
 <h1> All Recipes </h1>
 <%=@recipes.count %> 
+<%= form_tag(@recipes) do |t| %> 
+    <%=t.label :title %> 
+    <%=t.test_field :title %> 
+
+
+    <% end %>
+
