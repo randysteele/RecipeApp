@@ -10,6 +10,16 @@
   </head>
 
   <body>
+
+  
     <%= yield %>
   </body>
+  <div> 
+  <% if logged_in? %> 
+  <%=link_to "Add a new Recipe", new_recipe_path %> |
+  <%=link_to "All Recipes", recipes_path %>|  
+  <%= link_to "Home", user_path(current_user)%>
+  <%=link_to "Logout", logout_path %> 
+  <% end %>
+  </div>
 </html>
