@@ -6,11 +6,7 @@ class RecipesController < ApplicationController
         @recipe.ingredients.build
         @recipe.ingredients.build
         @recipe.ingredients.build
-        @recipe.ingredients.build
-        @recipe.ingredients.build
-        @recipe.ingredients.build
-        @recipe.ingredients.build
-        @recipe.ingredients.build
+        @recipe.ingredients.build        
     end
 
     def create 

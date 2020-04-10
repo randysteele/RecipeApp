@@ -1,11 +1,11 @@
 <h1> Create A New Recipe </h1>
 
 <%= form_for @recipe do |f| %>
-        <%= f.label "Title:" %><br>
+        <%= f.label "Title" %>
         <%= f.text_field :title %><br/>
       
         <%= f.fields_for :ingredients do |inner_form| %>
-          <%= inner_form.label :Ingredient %>
+          <%= inner_form.label :Ingredient%>
           <%= inner_form.text_field :name %><br/><br>
       
           <%= inner_form.label :quantity %>
@@ -13,9 +13,16 @@
 
           <%= inner_form.label :measurement %>
           <%= inner_form.text_field :measurement %><br/><br>
+
+          
+
+     
         <% end %>
+
+        <%= f.label :Directions %>
+        <%= f.text_area :content %><br/>
 
      
       
-        <%= f.submit %>
+        <%= f.submit %><br><br>
       <% end %>
