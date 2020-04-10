@@ -13,11 +13,10 @@ class RecipesController < ApplicationController
     end
 
     def index 
-        if params[:user_id] && @recipe = Recipe.find_by_id(params[:user_id])
-          @recipes = Recipe.find(params[user_id]).recipes
-            @recipes = @user.recipes
+        if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
+          @user = @user.recipes
         else
-            @error = "Sorry, that receipe doesn't exit" if !params[:user_id]
+            @error = "Sorry, that receipe doesn't exist" if !params[:recipe_id]
             @recipes = Recipe.all 
         end
     end
