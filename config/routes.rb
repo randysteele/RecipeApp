@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :recipes
+  resources :recipes do
+    resources :comments
+  end
+
   resources :ingredients
 
   root 'sessions#home'
@@ -15,10 +18,10 @@ Rails.application.routes.draw do
   end
   
 
-  resources :comments do 
-    resources :recipes
-  end
+  resources :comments 
+  resources :recipes
   
+
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
