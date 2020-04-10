@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :recipes
   resources :ingredients
-  resources :users
+  resources :users do 
+    resources :recipes
+  end
+  
   root 'sessions#home'
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
