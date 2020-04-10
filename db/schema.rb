@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_201840) do
+ActiveRecord::Schema.define(version: 2020_04_10_210345) do
+
+  create_table "add_recipe_id_to_ingredients", force: :cascade do |t|
+    t.string "recipe_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_add_recipe_id_to_ingredients_on_recipe_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -31,6 +38,8 @@ ActiveRecord::Schema.define(version: 2020_04_10_201840) do
     t.string "measurement"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "recipe_id"
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
   create_table "posts", force: :cascade do |t|

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :add_recipe_id_to_ingredients
   resources :comments
   resources :recipes do
     resources :comments

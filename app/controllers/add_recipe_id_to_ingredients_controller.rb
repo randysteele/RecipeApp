@@ -1,0 +1,2 @@
+class AddRecipeIdToIngredientsController < ApplicationController
+end
