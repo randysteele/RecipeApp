@@ -1,9 +1,5 @@
-<h1> All Recipes </h1>
-<%=@recipes.count %> 
-<%= form_tag(@recipes) do |t| %> 
-    <%=t.label :title %> 
-    <%=t.test_field :title %> 
-
-
+<ul>
+<% @recipes.each do |r| %>
+    <li><%= link_to r.title, recipe_path(r) %> </li>
     <% end %>
-
+    </ul>
