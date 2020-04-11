@@ -1,6 +1,16 @@
 <h1> Recipe Details </h1>
 
 <h2><%= @recipe.title %> </h2>
+<h2>Posted By: <%= @recipe.user.username%></h2>
 <h3><%= @recipe.content %></h3> <br><br>
+
+
+<%= link_to "See All Comments", recipe_comments_path(@recipe)%>| <br>
+<%= link_to "Add a new comment", new_recipe_comment_path(@recipe)%>
+
+<h4>Comments: </h4>
+<% @recipe.comments.each do |com| %>
+    <%=com.user.username%>says "<%=link_to com.content, comment_path(com)%>"
+    <% end %> 
  
  

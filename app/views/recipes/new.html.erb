@@ -1,8 +1,8 @@
 <h1> Create A New Recipe </h1>
 
 <%= form_for @recipe do |f| %>
-        <%= f.label "Title" %>
-        <%= f.text_field :title %><br/>
+        <%= f.label "Title of your Recipe" %>
+        <%= f.text_field :title, :value => (f.object.title ? f.object.title.titlecase : '')%><br/>
       
         <%= f.fields_for :ingredients do |inner_form| %>
           <%= inner_form.label :Ingredient%>

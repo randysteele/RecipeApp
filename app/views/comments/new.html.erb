@@ -1,6 +1,18 @@
-<% if @comment.recipe_id %>
-New Comment for <%=@comment.recipe_id.title%>
-<% else %>
-New Comment
-<% end %> 
+<h2> Add a comment to this recipe</h2>
+
+
+<%= form_for([@recipe,@comment]) do |f| %>
+
+    <% if !@post %>
+    <%= f.label :recipe %>
+    <%= f.collection_select :recipe_id, Recipe.all, :id, :title %><br>
+    <% end %>
+    
+    <%= f.label :Comment %>
+    <%= f.text_area :content %><br><br><br>
+
+    <%= f.submit %>
+
+    
+<% end %>
 
