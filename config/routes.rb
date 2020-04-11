@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :add_recipe_id_to_ingredients
   resources :comments
   resources :recipes do
-    resources :comments
+    resources :comments , only: [:new, :create, :index]
   end
 
   resources :ingredients
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
 
   resources :users do 
-    resources :recipes
+    resources :recipes, only: [:new, :create, :index]
   end
   
 

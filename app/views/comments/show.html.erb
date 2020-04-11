@@ -1,0 +1,7 @@
+<%= @comment.content%> - <%= @comment.user.username%>  
+
+<%= @comment.user == current_user %>
+<%= link_to "Edit Comment", edit_comment_path(@comment) %>
+<% end %>
+
+<h4> See The Recipe Here: <%= link_to @comment.recipe.title,  recipe_patj(@comment.recipe_id) %></h4>

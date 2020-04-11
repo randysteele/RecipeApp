@@ -23,7 +23,8 @@ class RecipesController < ApplicationController
     end
     
     def show 
-        @recipe = Recipe.find(params[:id])
+        @recipe = Recipe.find_by_id(params[:id])
+        redirect_to recipes_path if !@recipe
     end
   
 
