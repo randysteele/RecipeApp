@@ -1,0 +1,19 @@
+<h3> Add an Ingredient </h3>
+
+
+<%= form_for @ingredient do |f| %>
+
+    Ingredient <%= f.label :name %>
+    <%= f.text_field :name %><br><br><br>
+
+
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity %><br><br><br>
+
+    <%= f.label :measurement %>
+    <%= f.text_field :measurement %><br><br><br><br>
+
+
+    <%= f.submit %><br><br>
+
+    <% end %> 

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'sessions#home'
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
+  get '/logout' => 'sessions#delete'
   delete '/logout' => 'sessions#delete'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

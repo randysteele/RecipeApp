@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
           @recipes = @user.recipes
         else
             @error = "Sorry, that receipe doesn't exist" if params[:user_id]
-            @recipes = Recipe.all 
+            @recipes = Recipe.alpha
         end
     end
     

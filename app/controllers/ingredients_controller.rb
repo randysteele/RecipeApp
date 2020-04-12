@@ -10,8 +10,8 @@ class IngredientsController < ApplicationController
 
     def create
             @ingredient = Ingredient.create(ingredient_params)
-            if @comment.save
-                redirect_to comments_path
+            if @ingredient.save
+                redirect_to ingredient_path
             else
                 render :new
             end
@@ -23,6 +23,6 @@ class IngredientsController < ApplicationController
 private
 
         def ingredient_params
-            params.require(:ingredient)permit(:quantity, :measurement)
+            params.require(:ingredient).permit(:quantity, :measurement)
         end
 end

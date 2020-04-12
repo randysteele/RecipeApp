@@ -1,9 +1,4 @@
 class SessionsController < ApplicationController
-    def delete
-        session.clear
-         redirect_to root_path
-    end
-
     def create 
         user = User.find_by(username: params[:user][:email])
         if user && user.authenticate(params[:user][:email])
@@ -15,11 +10,10 @@ class SessionsController < ApplicationController
         end
     end
 
-    def google       
-      #  binding.pry  
-        @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
+    def google   
+      @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
             user.username = auth["info"]["first_name"]
-            user.password = SecureRandom.hex(10)
+            user.password = SecureRandom.hex(9)
         end
         if @user.save
             session[:user_id] = @user.id
@@ -27,6 +21,11 @@ class SessionsController < ApplicationController
           else
             redirect_to '/'
           end
+    end
+
+    def delete
+        session.clear
+         redirect_to root_path
     end
 
 private

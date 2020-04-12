@@ -23,11 +23,19 @@
   <% end %>
   </div>
 
+
+  <div> 
+  <% if !logged_in? %> 
+  <%= link_to "Signup Here!", signup_path %> | 
+  <%= link_to "Login Here!", login_path %>
+  <% end %>
+  </div>
+
   <div>
   <% if flash[:message] %>
     <%= flash[:message] %>
     <% end %>
 <%= @error %> 
   </div>
-
+  <%= link_to "Login with Google!", '/auth/google_oauth2' %>
 </html>

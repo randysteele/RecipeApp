@@ -1,3 +1,7 @@
+<h1> All Recipes </h1>
+<% if @recipes.count == 0 %>
+<h1><%= "Sorry, there are no recipes to see right now" %></h1>
+<% end %>
 <ul>
 <% @recipes.each do |r| %>
     <li><%= link_to r.title, recipe_path(r) %> </li>
