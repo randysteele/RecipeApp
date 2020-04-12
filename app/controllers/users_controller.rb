@@ -16,8 +16,8 @@ class UsersController < ApplicationController
     end
 
     def show 
-        @recipe = Recipe.find(params[:id])
-        @user = User.find_by(params[:id])
+        @user = User.find_by_id(params[:id])
+        @recipe = Recipe.find_by_id(params[:id])        
     end
 
     def edit

@@ -6,5 +6,5 @@ class Recipe < ApplicationRecord
     validates :title, presence: true 
     accepts_nested_attributes_for :ingredients    
 
-    scope :alpha, -> (order(:title))
+    scope :alpha, -> { order(:title) }
 end

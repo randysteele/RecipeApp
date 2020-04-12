@@ -4,7 +4,7 @@
         <%= f.label "Title of your Recipe" %>
         <%= f.text_field :title, :value => (f.object.title ? f.object.title.titlecase : '')%><br/>
       
-        <%= f.fields_for :ingredient do |inner_form| %>
+        <%= f.fields_for :ingredients do |inner_form| %>
           <%= inner_form.label :ingredient%>
           <%= inner_form.text_field :name %><br/><br>
       
