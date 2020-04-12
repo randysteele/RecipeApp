@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
   resources :comments 
   resources :recipes
+
+
+  
+  get '/auth/:provider/callback', to: 'sessions#google'
   
 
 

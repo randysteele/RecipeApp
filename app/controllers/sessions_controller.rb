@@ -14,4 +14,9 @@ class SessionsController < ApplicationController
             redirect_to login_path
         end
     end
+
+    def google 
+        binding.pry
+        
+    end
 end
