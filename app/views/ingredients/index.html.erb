@@ -1,0 +1,11 @@
+<% if @recipe %>
+  <h1>Ingredients for <%= @recipe.title%></h1>
+<% else %>
+  <h1>All Ingredients</h1>
+<% end %>
+
+<ul>
+<% @ingredients.each do |i|%>
+  <li><%= i.users.username%>  "<%= i.content%>" about this recipe: <strong><%= link_to i.recipe.title, post_path(i.post_id) %></strong></li>
+<% end %>
+</ul>

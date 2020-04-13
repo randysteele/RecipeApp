@@ -18,7 +18,7 @@ def index
   end
 
   def create
-    @ingredient = current_user.recipe.ingredient.build(ingredient_params)
+    @ingredient = current_user.recipes.ingredient.build(ingredient_params)
     if @ingredient.save
         redirect_to ingredients_path
     else
