@@ -1,2 +1,0 @@
-class AddRecipeIdToIngredient < ApplicationRecord
-end

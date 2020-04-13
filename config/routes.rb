@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  resources :add_recipe_id_to_ingredients
-  resources :comments
+  
+  
   resources :recipes do
-    resources :comments , only: [:new, :create, :index]
+    resources :comments
   end
+  resources :comments
 
-  resources :ingredients
+  resources :recipes do
+    resources :ingredients, only: [:new, :create, :index]
+  end
 
   root 'sessions#home'
   get '/signup' => 'users#new'
@@ -17,12 +20,9 @@ Rails.application.routes.draw do
 
   resources :users do 
     resources :recipes, only: [:new, :create, :index]
-  end
-  
-
-  resources :comments 
+  end  
   resources :recipes
-
+  resources :ingredients
 
   
   get '/auth/:provider/callback', to: 'sessions#google'
