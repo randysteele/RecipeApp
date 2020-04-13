@@ -6,28 +6,29 @@ def index
     else
     #   @error = "That recipe doesn't exist" if params[:recipe_id]
       @ingredients = Ingredient.all
+    
     end
   end
 
   def new 
     if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
-        @ingredient = @recipe.ingredient.build
+        @ingredient = @recipe.ingredients.build
     else
         @ingredient = Ingredient.new
+        binding.pry
     end
   end
 
   def create
-    @ingredient = current_user.recipes.ingredient.build(ingredient_params)
-    if @ingredient.save
-        redirect_to ingredients_path
+     @ingredient = current_user.recipes.ingredients.build(ingredient_params)
+       if @ingredient.save
+        redirect_to ingredients_path        
     else
         render :new
     end
   end
 
   def show
-    @ingredient = Ingredient.find_by_id(params[:id])
   end
 
   def edit

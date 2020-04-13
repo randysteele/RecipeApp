@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :comments
   end
+
   resources :comments
 
   resources :recipes do
     resources :ingredients
   end
+  resources :ingredients
+  
 
   root 'sessions#home'
   get '/signup' => 'users#new'
@@ -22,8 +25,12 @@ Rails.application.routes.draw do
     resources :recipes
   end  
 
+  resources :users do 
+    resources :ingredients
+  end 
+
   resources :recipes
-  resources :ingredients
+  
 
 
 
