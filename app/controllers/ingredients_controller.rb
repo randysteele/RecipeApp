@@ -32,6 +32,7 @@ def index
   end
 
   def edit
+    @ingredient = Ingredient.find_by_id(params[:id])
   end
 
   def update 
