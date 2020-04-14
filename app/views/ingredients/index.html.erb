@@ -6,11 +6,11 @@
 
 
 
-<ol>
+<ul>
     <% @ingredients.each do |i|%>
-        <%= i.name %> <%= i.quantity%>  <%= i.measurement%> <br><br>
+    <li>    Ingredient Name:<%= i.name %><br><br> Amount:<%= i.quantity%> <%= i.measurement%> <br><br></li>
       <% end %>
-      </or>
+      </ul>
 
 
 

@@ -15,12 +15,11 @@ def index
         @ingredient = @recipe.ingredients.build
     else
         @ingredient = Ingredient.new
-     #   binding.pry
-    end
+       end
   end
 
   def create
-     @ingredient = current_user.recipes.ingredients.build(ingredient_params)
+     @ingredient = current_user.ingredients.build(ingredient_params)
        if @ingredient.save
         redirect_to ingredients_path        
     else
@@ -44,9 +43,9 @@ def index
 
 private
 
-        def ingredient_params
-            params.require(:ingredient).permit(:name, :quantity, :measurement, :recipe_id)
-        end
+   def ingredient_params
+         params.require(:ingredient).permit(:name, :quantity, :measurement, :recipe_id)
+   end
 end
 
 
