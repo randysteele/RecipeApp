@@ -1,6 +1,18 @@
-<% if @ingredients %>
-  <h1>Ingredients for <%= @recipe.title%></h1>
+<% if @recipe %>
+  <h1>Ingredients for <%= @recipe.title %></h1>
 <% else %>
   <h1>All Ingredients</h1>
 <% end %>
+
+<ul>
+
+
+    <% @ingredients.each do |c|%>
+        <%= c.name%>
+        <%= c.quantity%> 
+        <%= c.measurement%>
+      <% end %>
+      </ul>
+
+
 

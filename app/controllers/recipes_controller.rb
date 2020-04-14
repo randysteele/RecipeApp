@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
         @recipe = current_user.recipes.build(recipe_params)
         if @recipe.save 
         redirect_to recipes_path      
+       # binding.pry
         else
             render :new  
         end

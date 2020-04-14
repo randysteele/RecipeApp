@@ -15,7 +15,7 @@ def index
         @ingredient = @recipe.ingredients.build
     else
         @ingredient = Ingredient.new
-        binding.pry
+     #   binding.pry
     end
   end
 
