@@ -4,15 +4,13 @@
   <h1>All Ingredients</h1>
 <% end %>
 
-<ul>
 
 
-    <% @ingredients.each do |c|%>
-        <%= c.name%>
-        <%= c.quantity%> 
-        <%= c.measurement%>
+<ol>
+    <% @ingredients.each do |i|%>
+        <%= i.name %> <%= i.quantity%>  <%= i.measurement%> <br><br>
       <% end %>
-      </ul>
+      </or>
 
 
 
