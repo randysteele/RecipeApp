@@ -31,11 +31,6 @@
   <% end %>
   </div>
 
-  <div>
-  <% if flash[:message] %>
-    <%= flash[:message] %>
-    <% end %>
-<%= @error %> 
-  </div>
+  
   <%= link_to "Login with Google!", '/auth/google_oauth2' %>
 </html>

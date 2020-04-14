@@ -36,7 +36,7 @@ def index
   end
 
   def update 
-    if @ingredient.update(ingredient_params)
+    if @ingredient.find_by(ingredient_params)
       redirect_to recipe_ingredients_path(@ingredient)
     else
       render :edit
