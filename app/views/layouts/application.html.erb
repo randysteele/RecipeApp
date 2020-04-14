@@ -25,12 +25,13 @@
 
 
   <div> 
-  <% if !logged_in? %> 
+  <% if @user != current_user %> 
   <%= link_to "Signup Here!", signup_path %> | 
   <%= link_to "Login Here!", login_path %>
+  <%= link_to "Login with Google!", '/auth/google_oauth2' %>
   <% end %>
   </div>
 
   
-  <%= link_to "Login with Google!", '/auth/google_oauth2' %>
+  
 </html>
