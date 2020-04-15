@@ -1,0 +1,14 @@
+<%= render partial: "layouts/errors", locals: {object: @comment} %>
+
+<%= form_for(@comment) do |f|%>
+
+    <%= f.label :recipe %>
+    <%= f.collection_select :recipe_id, Recipe.all, :id, :title %>
+  
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  
+  
+    <%= f.submit %>
+  
+  <% end %>

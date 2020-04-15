@@ -7,7 +7,7 @@
     <%= f.label :recipe %>
     <%= f.collection_select :recipe_id, Recipe.all, :id, :title %><br>
     <% end %>
-    <%= f.label :Comment %>
+    <%= f.label :content %>
     <%= f.text_area :content %><br><br><br>
 
     <%= f.submit %>

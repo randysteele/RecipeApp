@@ -1,4 +1,9 @@
 class RecipesController < ApplicationController
+    before_action :redirect_if_not_logged_in
+
+   # helper_method :display_recipes
+
+    
     def new 
         @recipe = Recipe.new      
         @recipe.ingredients.build(name: "Ingredient One")
@@ -43,4 +48,13 @@ class RecipesController < ApplicationController
             ingredients_attributes: [:quantity, :name, :measurement, :recipe_id]
           )
     end
+
+    def display_recipes
+        if @user.recipes.empty?
+          tag.h2(link_to('No recipes yet - write a recipe here', new_recipe_path))
+        else
+          user = @user == current_user ? 'Your' : "#{@user.username}'s"
+          content_tag(:h2, "#{user} #{pluralize(@user.recipes.count, 'Recipe')}:")    
+        end
+      end
 end

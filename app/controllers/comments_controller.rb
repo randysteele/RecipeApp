@@ -20,13 +20,14 @@ class CommentsController < ApplicationController
       def create
         @comment = current_user.comments.build(comment_params)
         if @comment.save
-            redirect_to new_comments_path(@comment)
+            redirect_to new_comment_path(@comment)
         else
             render :new
         end
       end
 
       def show
+        @comment = Comment.find_by_id(params[:id])
       end
 
       def edit

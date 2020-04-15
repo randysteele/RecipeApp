@@ -1,4 +1,4 @@
-<%= @comment.content%> - <%= @comment.user.username%>  
+<%= @comment.content%>  <%= @comment.user.username%>  
 
 <%= @comment.user == current_user %>
 <%= link_to "Edit Comment", edit_comment_path(@comment) %>

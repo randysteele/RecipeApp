@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
  gem 'omniauth'
  gem 'dotenv-rails'
  gem 'omniauth-google-oauth2'
+#  gem 'titleize', '~> 1.4', '>= 1.4.1'
  
 
 # Use Active Storage variant

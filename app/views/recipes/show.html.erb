@@ -1,10 +1,12 @@
 <h1> Recipe Details </h1>
 
 <h2><%= @recipe.title %> </h2>
-<h2>Posted By: <%= @recipe.user.username%></h2>
+<h2>Posted By: <%= link_to @recipe.user.username, user_path(@recipe.user)%></h2>
+
+
+
+
 <%= @recipe.ingredients.name %><br>
-
-
 
 
 
