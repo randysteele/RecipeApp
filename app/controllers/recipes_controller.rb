@@ -15,7 +15,6 @@ class RecipesController < ApplicationController
         @recipe = current_user.recipes.build(recipe_params)
         if @recipe.save 
         redirect_to recipes_path      
-       # binding.pry
         else
             render :new  
         end
@@ -33,6 +32,7 @@ class RecipesController < ApplicationController
     def show 
         @recipe = Recipe.find_by_id(params[:id])
         redirect_to recipes_path if !@recipe
+       #
     end
   
 
@@ -45,7 +45,7 @@ class RecipesController < ApplicationController
         params.require(:recipe).permit(
             :title,
             :content,
-            ingredients_attributes: [:quantity, :name, :measurement, :recipe_id]
+            ingredients_attributes: [:quantity, :name, :measurement]
           )
     end
 

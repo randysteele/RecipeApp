@@ -2,11 +2,11 @@
 
 <h2><%= @recipe.title %> </h2>
 <h2>Posted By: <%= link_to @recipe.user.username, user_path(@recipe.user)%></h2>
-
-
-
-
-<%= @recipe.ingredients.name %><br>
+<ol><% @recipe.ingredients.each do |i| %><br>
+  <li>  <%= i.name %><br> </li>
+    <% end %>
+    </ol>
+<p>Content: <%= @recipe.content %></p><br>
 
 
 
@@ -16,8 +16,8 @@
 
 <h4>Comments: </h4>
 <% @recipe.comments.each do |com| %>
-    <%=com.user.username%>says "<%=link_to com.content, comment_path(com)%>"
-    <% end %> 
+    <%=com.user.username%> says: <br>"<%=link_to com.content, comment_path(com)%>"<br><br>
+    <% end %> <br>
 
     
  

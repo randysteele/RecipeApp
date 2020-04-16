@@ -28,7 +28,7 @@ def index
   end
 
   def show
-    @ingredient = Ingredient.find_by_id(params[:id])
+    @ingredient = Ingredient.find_by_id(params[:recipe_id])
   end
 
   def edit
