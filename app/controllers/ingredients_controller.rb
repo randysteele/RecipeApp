@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController
 
+
 def index
     if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
        @ingredients = @recipe.ingredients

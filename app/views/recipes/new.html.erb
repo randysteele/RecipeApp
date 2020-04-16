@@ -5,11 +5,11 @@
 
 
 
-<%= form_for @recipe do |f| %>
+<ol><%= form_for @recipe do |f| %>
         <%= f.label "Title of your Recipe" %>
         <%= f.text_field :title%><br/>
       
-        <%= f.fields_for :ingredients do |inner_form| %>
+        <%= f.fields_for :ingredients do |inner_form| %><br>
           <%= inner_form.label :ingredient%>
           <%= inner_form.text_field :name %><br/><br>
       
@@ -21,11 +21,13 @@
 
      
         <% end %>
-
+          
         
 
         <%= f.label :Directions %>
         <%= f.text_area :content %><br/><br>
+
+        </ol>
 
         <%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe.ingredients)%> |<br><br>
 
