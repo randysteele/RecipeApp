@@ -2,9 +2,7 @@ class Ingredient < ApplicationRecord
     has_many :users
     has_many :recipes
     validate :is_title_case
- 
-  
-  before_save :make_title_case
+    before_save :make_title_case
 
   def is_title_case
     if name.split.any?{|w|w[0].upcase != w[0]}

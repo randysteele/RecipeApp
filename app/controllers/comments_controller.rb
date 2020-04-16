@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
         if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
            @comments = @recipe.comments
         else
-          @error = "That recipe doesn't exist" if params[:recipe_id]
+          @error = "Oops, that recipe doesn't exist yet. Please try a different one" if params[:recipe_id]
           @comments = Comment.all
         end
       end
@@ -50,7 +50,7 @@ class CommentsController < ApplicationController
       def set_comment
         @comment = Comment.find_by(id: params[:id])
         if !@comment
-          flash[:message] = "Comment was not found"
+          flash[:message] = "Sorry, that comment was not found. Please try again."
           redirect_to comments_path
         end
       end
