@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :set_comment
 
     def index
         if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
@@ -31,12 +32,14 @@ class CommentsController < ApplicationController
       end
 
       def edit
+        @comment = Comment.find_by_id(params[:id])
       end
 
 
       def update 
         if @comment.update(comment_params)
           redirect_to comment_path(@comment)
+      #    binding.pry
         else
           render :edit
         end
