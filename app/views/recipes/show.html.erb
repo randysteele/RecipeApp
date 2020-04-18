@@ -1,6 +1,6 @@
-<h1 class="center", class="orange-text" > Recipe Details </h1>
+<h1 class="center", class="orange-text" > Recipe Details for <%=@recipe.title%> </h1>
 
-<h4 class="center"><%= @recipe.title %> </h4>
+
 <h4>Posted By: <%= link_to @recipe.user.username, user_path(@recipe.user)%></h4>
 <h4 class="green-text">Here is what you'll need:</h4><ol><% @recipe.ingredients.each do |i| %><br>
   <li>  <%= i.name %><br> </li> 
