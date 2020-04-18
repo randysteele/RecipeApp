@@ -39,7 +39,6 @@ class CommentsController < ApplicationController
       def update 
         if @comment.update(comment_params)
           redirect_to comment_path(@comment)
-      #    binding.pry
         else
           render :edit
         end
@@ -54,7 +53,6 @@ class CommentsController < ApplicationController
         @comment = Comment.find_by(id: params[:id])
         if !@comment
           flash[:message] = "Sorry, that comment was not found. Please try again."
-          redirect_to comments_path
         end
       end
 

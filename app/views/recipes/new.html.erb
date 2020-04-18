@@ -1,8 +1,6 @@
-<h1> Create A New Recipe </h1>
-
-
 <%= render partial: "layouts/errors", locals: {object: @recipe} %>
 
+<h1> Create A New Recipe </h1>
 
 
 <ol><%= form_for @recipe do |f| %>
@@ -17,21 +15,16 @@
           <%= inner_form.number_field :quantity %><br/><br>
 
           <%= inner_form.label :measurement %>
-          <%= inner_form.text_field :measurement %><br/><br>        
-
-     
+          <%= inner_form.text_field :measurement %><br/><br>       
         <% end %>
-          
-        
+                 
 
         <%= f.label :Directions %>
         <%= f.text_area :content %><br/><br>
 
         </ol>
 
-        <%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe.ingredients)%> |<br><br>
-
-     
+        <%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe.ingredients)%> |<br><br>     
       
         <%= f.submit %><br><br>
       <% end %>

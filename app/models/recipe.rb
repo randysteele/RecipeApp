@@ -1,16 +1,17 @@
 class Recipe < ApplicationRecord
-    has_many :ingredients
     belongs_to :user
+    has_many :ingredients    
     has_many :comments
-    has_many :comments, through: :users
+    has_many :users, through: :comments
     validates :title, presence: true 
     validate :is_title_case
-    accepts_nested_attributes_for :ingredients    
-    
- 
-  
+    accepts_nested_attributes_for :ingredients      
     before_save :make_title_case
     scope :alpha, -> { order(:title) }
+
+    scope :with_most_comments, -> { where("LENGTH(comments) > 5") }
+
+   
 
 
     def is_title_case

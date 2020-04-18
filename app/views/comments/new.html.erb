@@ -1,3 +1,4 @@
+
 <h2> Add a comment to this recipe</h2>
 
 
@@ -6,6 +7,8 @@
     <% if !@comment.recipe %>
     <%= f.label :recipe %>
     <%= f.collection_select :recipe_id, Recipe.all, :id, :title %><br>
+    <% else %>
+    <%= f.hidden_field :recipe_id %>
     <% end %>
     <%= f.label :content %>
     <%= f.text_area :content %><br><br><br>

@@ -6,6 +6,6 @@
 
 <ul>
 <% @comments.each do |c|%>
-  <li><%= c.user.username%> says "<%= c.content%>" about this recipe: <strong><%= link_to c.recipe.title, recipe_path(c.recipe_id) %></strong></li>
+  <li> <strong><%= link_to c.recipe.title, recipe_path(c.recipe_id) %></strong> - <%= c.user.username%> says "<%= c.content%>" </li>
 <% end %>
 </ul>

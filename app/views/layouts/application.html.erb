@@ -1,37 +1,37 @@
 <!DOCTYPE html>
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
+    <body>
+    <nav class="blue">
+      <div class ="container">   
+  <% if logged_in? %> 
+      <%=link_to "Add a new Recipe", new_recipe_path %> |
+      <%=link_to "All Recipes", recipes_path %> |    
+      <%=link_to "Logout", logout_path %> | 
+      <% else %> 
+  <ul class="right">
+      <li><%= link_to "Signup Here!", signup_path %></li>
+      <li><%= link_to "Login Here!", login_path %> /li>
+      <li><%= link_to "Login with Google!", '/auth/google_oauth2'%></li>
+  <% end %>   
+  </ul>
+  </div>
+  </nav>
+  <div class="container">
+  
+  
 <html>
+ <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <head>
     <title>RecipeApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-
-  
     <%= yield %>
   </body>
-  <div> 
-  <% if logged_in? %> 
-  <%=link_to "Add a new Recipe", new_recipe_path %> |
-  <%=link_to "All Recipes", recipes_path %>|  
-  
-  <%=link_to "Logout", logout_path %> 
-  <% end %>
-  </div>
-
-
-  <div> 
-  <% if @user != current_user %> 
-  <%= link_to "Signup Here!", signup_path %> | 
-  <%= link_to "Login Here!", login_path %>
-  <%= link_to "Login with Google!", '/auth/google_oauth2' %>
-  <% end %>
-  </div>
-
-  
-  
+   
+  <body>  
 </html>

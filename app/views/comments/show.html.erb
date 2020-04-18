@@ -1,6 +1,6 @@
-<%= @comment.content%>  <%= @comment.user.username%>  
+<%= @comment.content%>  Posted By: <%= @comment.user.username%>  <br>
 
-<%= @comment.user == current_user %>
+<%  @comment.user == current_user %> 
 <%= link_to "Edit Comment", edit_comment_path(@comment) %>
 
 

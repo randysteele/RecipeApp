@@ -1,9 +1,8 @@
 class RecipesController < ApplicationController
     before_action :redirect_if_not_logged_in
-
-   # helper_method :display_recipes
-
     
+   # helper_method :display_recipes    
+
     def new 
         @recipe = Recipe.new      
         @recipe.ingredients.build(name: "Ingredient One")
