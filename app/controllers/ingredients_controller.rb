@@ -7,9 +7,8 @@ def index
     if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
        @ingredients = @recipe.ingredients
     else
-    #   @error = "That recipe doesn't exist" if params[:recipe_id]
-      @ingredients = Ingredient.all
-    
+      @error = "Sorry, that doesn't exist" if params[:recipe_id]
+      @ingredients = Ingredient.all    
     end
   end
 

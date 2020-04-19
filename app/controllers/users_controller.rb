@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-    
-    helper_method :display_recipes
 
     def new 
         @user = User.new 
