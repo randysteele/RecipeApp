@@ -2,6 +2,9 @@
 
 
 
-
+   Your Recipes; <% @user.recipes.each do |r|%>
+    <li>     <%= link_to r.title, user_recipe_path(@recipe) %> </li>
+      <% end %>
+      </ul><br><br>
 
 <%= link_to "Logout", logout_path, method: "delete" %> |

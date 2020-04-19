@@ -9,19 +9,16 @@ class Recipe < ApplicationRecord
     before_save :make_title_case
     scope :alpha, -> { order(:title) }
 
-    scope :with_most_comments, -> { where("LENGTH(comments) > 5") }
-
-   
+    scope :with_most_comments, -> { where("LENGTH(comments) > 5") }   
 
 
     def is_title_case
         if title.split.any?{|w|w[0].upcase != w[0]}
-          errors.add(:title, "Title must be in title case, please capitalize the first letter")
+          errors.add(:title, "must be in Title Case, please capitalize the first letter")
         end
     end
      
     def make_title_case
         self.title = self.title.titlecase
     end
-
 end

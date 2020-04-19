@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     
+    helper_method :display_recipes
 
     def new 
         @user = User.new 
@@ -28,4 +29,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
+
+
+
 end

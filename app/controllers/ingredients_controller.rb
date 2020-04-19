@@ -33,12 +33,12 @@ def index
   end
 
   def edit
-    @ingredient = Ingredient.find_by_id(params[:id])
+    @ingredient = Ingredient.find_by_id(params[:recipe_id])
   end
 
   def update 
-    if @ingredient.find_by(ingredient_params)
-      redirect_to recipe_ingredients_path(@ingredient)
+    if @ingredient.update(ingredient_params)
+      redirect_to ingredient_path(@ingredient)
     else
       render :edit
     end

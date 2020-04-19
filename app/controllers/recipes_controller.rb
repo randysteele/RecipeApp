@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
     before_action :redirect_if_not_logged_in
-    
+
    # helper_method :display_recipes    
 
     def new 
@@ -37,13 +37,21 @@ class RecipesController < ApplicationController
     def show 
         @recipe = Recipe.find_by_id(params[:id])
         redirect_to recipes_path if !@recipe
-       #
     end
   
 
     def edit
         @recipe = Recipe.find(params[:id])
     end 
+
+    def update 
+        if @recipe.update(recipe_params)
+          redirect_to recipe_path(@recipe)
+        else
+          render :edit
+        end
+      end
+
 
    private
     def recipe_params
@@ -54,12 +62,5 @@ class RecipesController < ApplicationController
           )
     end
 
-    def display_recipes
-        if @user.recipes.empty?
-          tag.h2(link_to('No recipes yet - write a recipe here', new_recipe_path))
-        else
-          user = @user == current_user ? 'Your' : "#{@user.username}'s"
-          content_tag(:h2, "#{user} #{pluralize(@user.recipes.count, 'Recipe')}:")    
-        end
-      end
+    
 end
