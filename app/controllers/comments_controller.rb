@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_comment
+  before_action :redirect_if_not_logged_in
+  before_action :set_comment, only: [:show, :edit, :update]
+  
 
     def index
         if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])

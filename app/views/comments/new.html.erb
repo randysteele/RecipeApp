@@ -1,7 +1,7 @@
 
 <h2> Add a comment to this recipe</h2>
 
-
+<%= render partial: "layouts/errors", locals: {object: @comment} %>
 <%= form_for([@comment.recipe,@comment]) do |f| %>
 
     <% if !@comment.recipe %>
