@@ -1,11 +1,11 @@
 class RecipesController < ApplicationController
-    before_action :redirect_if_not_logged_in
-    
+    # before_action :redirect_if_not_logged_in    
 
     def new 
         @recipe = Recipe.new      
         @recipe.ingredients.build(name: "Ingredient One")
         @recipe.ingredients.build(name: "Ingredient Two")
+        @recipe.ingredients.build(name: "Ingredient Three")
         @recipe.ingredients.build(name: "Ingredient Four")  
         @recipe.ingredients.build(name: "Ingredient Five") 
         @recipe.ingredients.build(name: "Ingredient Six") 
@@ -13,15 +13,6 @@ class RecipesController < ApplicationController
         @recipe.ingredients.build(name: "Ingredient Eight") 
         @recipe.ingredients.build(name: "Ingredient Nine") 
         @recipe.ingredients.build(name: "Ingredient Ten") 
-    end
-
-    def create 
-        @recipe = current_user.recipes.build(recipe_params)
-        if @recipe.save 
-        redirect_to recipes_path      
-        else
-            render :new  
-        end
     end
 
     def index 
@@ -32,12 +23,15 @@ class RecipesController < ApplicationController
             @recipes = Recipe.alpha
         end
     end
-    
-    def show 
-        @recipe = Recipe.find_by_id(params[:id])
-        redirect_to recipes_path if !@recipe
+
+    def create 
+        @recipe = current_user.recipes.build(recipe_params)
+        if @recipe.save 
+        redirect_to recipes_path      
+        else
+            render :new  
+        end
     end
-  
 
     def edit
         @recipe = Recipe.find(params[:id])
@@ -51,6 +45,12 @@ class RecipesController < ApplicationController
         end
       end
 
+    
+    def show 
+        @recipe = Recipe.find_by_id(params[:id])
+        redirect_to recipes_path if !@recipe
+    end 
+
 
    private
     def recipe_params
@@ -59,7 +59,5 @@ class RecipesController < ApplicationController
             :content,
             ingredients_attributes: [:quantity, :name, :measurement]
           )
-    end
-
-    
+    end    
 end
