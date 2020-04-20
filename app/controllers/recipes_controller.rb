@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-    # before_action :redirect_if_not_logged_in    
+     before_action :redirect_if_not_logged_in    
 
     def new 
         @recipe = Recipe.new      
@@ -50,6 +50,8 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find_by_id(params[:id])
         redirect_to recipes_path if !@recipe
     end 
+
+
 
 
    private
