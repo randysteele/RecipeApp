@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
      before_action :redirect_if_not_logged_in    
 
     def new 
-        @recipe = Recipe.new      
+        @recipe = Recipe.new    
         @recipe.ingredients.build(name: "Ingredient One")
         @recipe.ingredients.build(name: "Ingredient Two")
         @recipe.ingredients.build(name: "Ingredient Three")

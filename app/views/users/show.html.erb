@@ -1,12 +1,9 @@
 <h3> Welcome <%= current_user.username %> </h3>
 
-<ul>
-<% @user.recipes.each do |r| %>
+Your Recipes; <% @user.recipes.each do |r| %>
     <li><%= link_to r.title, recipe_path(r) %> </li>
     <% end %>
-    </ul>
-
-
+    
       
 
 <%= link_to "Logout", logout_path, method: "delete" %> |
