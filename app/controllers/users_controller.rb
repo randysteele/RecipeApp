@@ -14,8 +14,10 @@ class UsersController < ApplicationController
     end
 
     def show 
+        # redirect_if_not_logged_in
         @user = User.find_by_id(params[:id])
-        @recipe = Recipe.find_by_id(params[:id])        
+        @recipe = Recipe.find_by_id(params[:id])     
+        # redirect_to '/' if !@user   
     end
 
     def edit
@@ -26,7 +28,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
-
-
-
 end
