@@ -12,10 +12,10 @@ class Recipe < ApplicationRecord
 
     scope :with_most_comments, -> { where("LENGTH(comments) > 5") }  
     
-    def ingredient_attributes=(ingredient)
-        self.ingredient = Ingredient.find_or_create_by(name: ingredient[:name])
-        self.ingredient.update(ingredient)
-      end
+    # def ingredient_attributes=(ingredient)
+    #     self.ingredient = Ingredient.find_or_create_by(name: ingredient[:name])
+    #     self.ingredient.update(ingredient)
+    #   end
 
 
     def is_title_case
