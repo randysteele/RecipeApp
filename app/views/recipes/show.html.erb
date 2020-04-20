@@ -14,10 +14,6 @@
 <%= link_to "Add a new comment", new_recipe_comment_path(@recipe)%><br>
 
 
-<h4>Comments: 
-<% @recipe.comments.each do |com| %>
-    <%=com.user.username%> says: <br>"<%=link_to com.content, comment_path(com)%>"<br><br>
-    <% end %> <br> </h4>
 
     
  

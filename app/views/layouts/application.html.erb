@@ -5,7 +5,7 @@
     <nav class="blue">
       <div class ="container">   
   <% if logged_in? %> 
-      <%=link_to "Add a new Recipe", new_recipe_path %> |
+      <%=link_to "Add a new Recipe", new_user_recipe_path(current_user) %> |
       <%=link_to "All Recipes", recipes_path %> |    
       <%=link_to "Logout", logout_path %> | 
       <% else %> 

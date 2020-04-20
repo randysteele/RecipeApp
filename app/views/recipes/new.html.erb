@@ -8,15 +8,15 @@
         <%= f.label "Title of your Recipe" %>
         <%= f.text_field :title%><br/>
       
-        <%= f.fields_for :ingredients do |inner_form| %><br>
-          <%= inner_form.label :ingredient%>
-          <%= inner_form.text_field :name %><br/><br>
+        <%= f.fields_for :ingredients do |i| %><br>
+          <%= i.label :ingredient%>
+          <%= i.text_field :name %><br/><br>
       
-          <%= inner_form.label :quantity %>
-          <%= inner_form.number_field :quantity %><br/><br>
+          <%= i.label :quantity %>
+          <%= i.number_field :quantity %><br/><br>
 
-          <%= inner_form.label :measurement %>
-          <%= inner_form.text_field :measurement %><br/><br>       
+          <%= i.label :measurement %>
+          <%= i.text_field :measurement %><br/><br>       
         <% end %>
                  
 
