@@ -1,10 +1,22 @@
-<h3> Make Changes to your recipe </h3>
+<%# <h3> Make Changes to your recipe </h3>
 
 <%= form_for @recipe do |f| %>
-    <%=  f.label :title %>
-    <%=  f.text_field :title %><br><br>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-<br><br>
+    <%# <%=  f.label :title %>
+<%#   <%=  f.text_field :title %><br><br>
+
+   <%# %= f.fields_for :ingredients do |i| %><br>
+      <%#    <%= i.label :ingredient%>
+         <%# <%= i.text_field :name %><br/><br>
+      
+        <%#  <%= i.label :quantity %>
+          <%#<%= i.number_field :quantity %><br/><br>
+
+          <%#<%= i.label :measurement %>
+          <%#<%= i.text_field :measurement %><br/><br>       
+        <%#<% end %>
+        
+    <%#<%= f.label :content %>
+    <%#<%= f.text_area :content %>
+<%#<br><br>
     <%= f.submit %> 
-    <% end %>
+   <%# <% end %> %> %>
