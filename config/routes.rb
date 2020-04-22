@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :recipes
   resources :comments
   resources :users do 
-    resources :recipes
+    resources :recipes 
   end  
   resources :users    
   root 'sessions#home'

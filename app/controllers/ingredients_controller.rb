@@ -1,16 +1,6 @@
 class IngredientsController < ApplicationController
   before_action :redirect_if_not_logged_in
-  
 
-
-def index
-    if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
-       @ingredients = @recipe.ingredients
-    else
-      @error = "Sorry, that doesn't exist" if params[:recipe_id]
-      @ingredients = Ingredient.all    
-    end
-  end
 
   def new 
     if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
@@ -23,9 +13,18 @@ def index
   def create
      @ingredient = current_user.ingredients.build(ingredient_params)
        if @ingredient.save
-        redirect_to ingredients_path        
+        redirect_to recipes_path
     else
         render :new
+    end
+  end
+
+  def index
+    if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
+       @ingredients = @recipe.ingredients
+    else
+      @error = "Sorry, that doesn't exist" if params[:recipe_id]
+      @ingredients = Ingredient.all    
     end
   end
 

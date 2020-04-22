@@ -1,5 +1,5 @@
 class Recipe < ApplicationRecord
-     belongs_to :user
+    belongs_to :user
     has_many :ingredients    
     accepts_nested_attributes_for :ingredients 
     has_many :comments
@@ -18,6 +18,20 @@ class Recipe < ApplicationRecord
     #   end
 
 
+    #   def ingredient_name
+    #    self.ingredient ? self.ingredient.name : nil
+    # end
+
+
+    # def ingredient_name=(name)
+    #   self.ingredient = Ingredient.find_or_create_by(name: name)
+    # end
+  
+    # def ingredient_name
+    #    self.ingredient ? self.ingredient.name : nil
+    # end
+
+
     def is_title_case
         if title.split.any?{|w|w[0].upcase != w[0]}
           errors.add(:title, "must be in Title Case, please capitalize the first letter of each word")
@@ -26,7 +40,5 @@ class Recipe < ApplicationRecord
      
     def make_title_case
         self.title = self.title.titlecase
-    end
-
- 
+    end 
 end

@@ -3,17 +3,30 @@
 <%= render partial: "layouts/errors", locals: {object: @ingredient} %>
 <%= form_for @ingredient do |f| %>
 
-     <%= f.label :name %>
-    <%= f.text_field :name %><br><br><br>
+ <% if !@ingredient.recipes %>
+  <%= f.label :post %>
+  <%= f.collection_select :recipe_id, Recipe.all, :id, :title %>
+<% else %>
+    <%= f.hidden_field :recipe_id %>
+<% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :quantity%>
+ <%= f.number_field :quantity%>
+
+ <%= f.label :measurement%>
+ <%= f.text_field :measurement%>
 
 
-    <%= f.label :measurement %>
-    <%= f.text_field :measurement %><br><br><br>
-
-    <%= f.label :quantity %>
-    <%= f.text_field :quantity %><br><br><br><br>
+<%= f.submit%>
+<%end%>
 
 
-    <%= f.submit %><br><br>
+  
 
-    <% end %> 
+     
+
+     
+     

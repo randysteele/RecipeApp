@@ -4,22 +4,20 @@ class RecipesController < ApplicationController
     def new
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
           @recipe = @user.recipes.build
-          @recipe.ingredients.build(name: "Ingredient")
-          @recipe.ingredients.build(name: "Ingredient")
-          @recipe.ingredients.build(name: "Ingredient")
-          @recipe.ingredients.build(name: "Ingredient")          
+          @recipe.ingredients.build(name: "Ingredient Name")
+
         else
           @recipe = Recipe.new
         end
     end
 
     def create 
-        @recipe = current_user.recipes.build(recipe_params)
-        if @recipe.save
-            redirect_to recipes_path
-        else
-            render :new
-        end
+        @recipe = current_user.recipes.build(recipe_params) 
+         if @recipe.save
+             redirect_to recipes_path
+         else
+         render :new
+         end
     end
 
 
@@ -33,7 +31,7 @@ class RecipesController < ApplicationController
 
 
     def edit
-        @recipe = Recipe.find(params[:id])
+        @recipe = Recipe.find_by_id(params[:id])
     end 
 
     
@@ -45,7 +43,7 @@ end
 
    private
     def recipe_params
-        params.require(:recipe).permit(:title, :content, ingredients_attributes: [:quantity, :name, :measurement]
+        params.require(:recipe).permit(:title, :content,  ingredients_attributes: [:quantity, :name, :measurement]
           )
     end
 end
