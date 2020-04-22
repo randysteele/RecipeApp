@@ -39,7 +39,22 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find_by_id(params[:id])
         redirect_to recipes_path if !@recipe 
     end 
+
+    def update
+        @recipe = Rost.find_by(id: params[:id])
+        redirect_to recipes_path if !@recipe || @recipe.user != current_user
+       if @recipe.update(recipe_params)
+         redirect_to recipe_path(@recipe)
+       else
+         render :edit
+       end
+     end
 end
+
+    def destroy
+        Recipe.find(params[:id]).destroy
+        redirect_to recipe_url
+    end
 
    private
     def recipe_params

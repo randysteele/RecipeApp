@@ -44,6 +44,11 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def destroy
+    Ingredient.find(params[:id]).destroy
+    redirect_to ingredient_url
+end
+
 private
 
    def ingredient_params

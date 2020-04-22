@@ -5,6 +5,14 @@
 <%= @ingredient.measurement%>
 
 
+<%= form_tag ingredient_path(@ingredient.id), method: "delete" do %>
+  <%= submit_tag "Delete #{@ingredient.name}" %>
+<% end %>
+
+
+
+
+
 
 
 

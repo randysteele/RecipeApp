@@ -9,6 +9,9 @@
 <h4>Directions: <%= @recipe.content %></h4><br>
 
 
+<%= form_tag recipe_path(@recipe.id), method: "delete" do %>
+  <%= submit_tag "Delete #{@recipe.title}" %>
+<% end %>
 
 <%= link_to "See All Comments", recipe_comments_path(@recipe)%><br>
 <%= link_to "Add a new comment", new_recipe_comment_path(@recipe)%><br>  
