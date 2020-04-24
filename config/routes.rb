@@ -12,12 +12,13 @@ Rails.application.routes.draw do
   resources :users do 
     resources :recipes 
   end  
-  resources :users    
+  resources :users 
+     
   root 'sessions#home'
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
-  get '/logout' => 'sessions#delete'
-  delete '/logout' => 'sessions#delete'
+  get '/logout' => 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'    
   get '/auth/:provider/callback', to: 'sessions#google'

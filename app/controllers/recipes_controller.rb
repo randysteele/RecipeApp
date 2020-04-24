@@ -5,29 +5,31 @@ class RecipesController < ApplicationController
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
           @recipe = @user.recipes.build
           @recipe.ingredients.build(name: "Ingredient Name")
-
         else
           @recipe = Recipe.new
         end
     end
 
-    def create 
+    def create   
         @recipe = current_user.recipes.build(recipe_params) 
          if @recipe.save
              redirect_to recipes_path
          else
+            binding.pry
          render :new
          end
     end
 
 
     def index 
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+        if params[:user_id] && @user = User.find_by_id(params[:id])
           @recipes = @user.recipes
         else
-            @error = "Sorry, that receipe doesn't exist" if params[:user_id]
+            @error = "Sorry, that receipe doesn't exist" if params[:id]
             @recipes = Recipe.alpha
+        end
     end
+
 
 
     def edit
@@ -38,17 +40,7 @@ class RecipesController < ApplicationController
     def show 
         @recipe = Recipe.find_by_id(params[:id])
         redirect_to recipes_path if !@recipe 
-    end 
-
-    def update
-        @recipe = Rost.find_by(id: params[:id])
-        redirect_to recipes_path if !@recipe || @recipe.user != current_user
-       if @recipe.update(recipe_params)
-         redirect_to recipe_path(@recipe)
-       else
-         render :edit
-       end
-     end
+    
 end
 
     def destroy
@@ -56,7 +48,7 @@ end
         redirect_to recipe_url
     end
 
-   private
+  
     def recipe_params
         params.require(:recipe).permit(:title, :content,  ingredients_attributes: [:quantity, :name, :measurement]
           )

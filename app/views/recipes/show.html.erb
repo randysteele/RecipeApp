@@ -1,19 +1,24 @@
 <h1 class="center", class="orange-text" > Recipe Details for <%=@recipe.title%> </h1>
 
 
+
 <h4>Posted By: <%= link_to @recipe.user.username, user_path(@recipe.user)%></h4>
 <h4 class="green-text">Here is what you'll need:</h4><ol><% @recipe.ingredients.each do |i| %><br>
   <li>  Ingredient: <%= link_to i.name, recipe_ingredient_path(i) %><br> Quantity:  <%=i.quantity %> <br> Measurement: <%= i.measurement %> <br> </li> 
     <% end %>
     </ol> </p>
+
+  
+
 <h4>Directions: <%= @recipe.content %></h4><br>
+
+
+<%= link_to "See All Comments", recipe_comments_path(@recipe)%><br>
+<%= link_to "Add a new comment", new_recipe_comment_path(@recipe)%><br>  
+<%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe)%> |<br><br> 
 
 
 <%= form_tag recipe_path(@recipe.id), method: "delete" do %>
   <%= submit_tag "Delete #{@recipe.title}" %>
 <% end %>
-
-<%= link_to "See All Comments", recipe_comments_path(@recipe)%><br>
-<%= link_to "Add a new comment", new_recipe_comment_path(@recipe)%><br>  
-<%= link_to "Would you like to add more ingredients", new_ingredient_path(@recipe) %><br><br>
  

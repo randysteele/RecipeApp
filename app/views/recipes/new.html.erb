@@ -4,7 +4,7 @@
 <%= render partial: "layouts/errors", locals: {object: @recipe} %>
 
 
-<ol><%= form_for @recipe do |f| %>
+<%= form_for @recipe do |f| %>
         <%= f.label "Title of your Recipe" %>
         <%= f.text_field :title%><br/>
       
@@ -23,9 +23,10 @@
         <%= f.label :Directions %>
         <%= f.text_area :content %><br/><br>
 
-        </ol>
 
-        <%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe.ingredients)%> |<br><br>     
-      
+       
         <%= f.submit %><br><br>
       <% end %>
+
+       <%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe.ingredients)%> |<br><br>     
+      

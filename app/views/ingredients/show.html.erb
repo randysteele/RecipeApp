@@ -1,21 +1,7 @@
-<h1> Ingredient Details </h1>
+<h1> Ingredient Details  </h1>
 
 <%= @ingredient.name%>  
 <%= @ingredient.quantity%>
 <%= @ingredient.measurement%>
-
-
-<%= form_tag ingredient_path(@ingredient.id), method: "delete" do %>
-  <%= submit_tag "Delete #{@ingredient.name}" %>
-<% end %>
-
-
-
-
-
-
-
-
-
 
 

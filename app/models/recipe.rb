@@ -1,11 +1,11 @@
 class Recipe < ApplicationRecord
     belongs_to :user
-    has_many :ingredients    
-    accepts_nested_attributes_for :ingredients 
+    has_many :ingredients      
     has_many :comments
     has_many :users, through: :comments
     validates :title, presence: true 
     validate :is_title_case
+    accepts_nested_attributes_for :ingredients 
          
     before_save :make_title_case
     scope :alpha, -> { order(:title) }

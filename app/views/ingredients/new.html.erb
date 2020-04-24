@@ -1,10 +1,10 @@
-<h3> Add an Ingredient </h3>
+  <h3> Add an Ingredient </h3>
 
 <%= render partial: "layouts/errors", locals: {object: @ingredient} %>
 <%= form_for @ingredient do |f| %>
 
  <% if !@ingredient.recipes %>
-  <%= f.label :post %>
+  <%= f.label :recipe %>
   <%= f.collection_select :recipe_id, Recipe.all, :id, :title %>
 <% else %>
     <%= f.hidden_field :recipe_id %>
@@ -18,7 +18,6 @@
 
  <%= f.label :measurement%>
  <%= f.text_field :measurement%>
-
 
 <%= f.submit%>
 <%end%>
