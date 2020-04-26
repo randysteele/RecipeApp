@@ -1,12 +1,28 @@
-<h1> Edit Ingredient </h1>
+<h3> Edit Ingredient </h3>
 
-<%= form_for :ingredient do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.label :measurement %>
-    <%= f.text_field :measurement %>
-    <%= f.label :quantity %>
-    <%= f.text_field :quantity %>
+    <%= form_for @ingredient do |f| %>            
+        
+          <%= f.label :name%>
+          <%= f.text_field :name %><br/><br>
+      
+          <%= f.label :quantity %>
+          <%= f.number_field :quantity %><br/><br>
 
-    <%= f.submit %> 
-    <% end %> 
+          <%= f.label :measurement %>
+          <%= f.text_field :measurement %><br/><br>                   
+   
+      
+        <%= f.submit %><br><br>
+      <% end %>
+
+
+
+
+
+
+
+
+    
+     
+
+

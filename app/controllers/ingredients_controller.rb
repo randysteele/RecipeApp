@@ -33,9 +33,24 @@ class IngredientsController < ApplicationController
   end
 
   def edit
-     @ingredient = Ingredient.find_by_id(params[:id])
+    @ingredient = Ingredient.find_by_id(params[:id])   
   end
 
+ 
+  def update 
+    @ingredient = Ingredient.find_by(id: params[:id])    
+      redirect_to ingredient_path if !@ingredient 
+      if @ingredient.update(ingredient_params)
+        redirect_to recipe_ingredient_path(@ingredient)    
+      else
+       render :edit
+      end
+    end
+
+    def destroy
+      Ingredient.find(params[:id]).destroy
+      redirect_to recipe_path
+  end
 
 private
 
