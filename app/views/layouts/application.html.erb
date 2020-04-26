@@ -7,7 +7,8 @@
   <% if logged_in? %> 
      <%= link_to "Home", user_path(current_user) %> |
       <%=link_to "Add a new Recipe", new_user_recipe_path(current_user) %> |
-      <%=link_to "All Recipes", recipes_path %> |    
+      <%=link_to "All Recipes", recipes_path %> |  
+      <%= link_to "Most Commented", recipes_most_comments_path%>  |
       <%=link_to "Logout", logout_path %> | 
       
       <% else %> 

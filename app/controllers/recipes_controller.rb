@@ -25,22 +25,34 @@ class RecipesController < ApplicationController
           @recipes = @user.recipes.alpha
         else
             @error = "Sorry, that receipe doesn't exist" if params[:id]
-            @recipes = Recipe.most_comments
+            @recipes = Recipe.alpha.all
         end
     end
 
 
-
     def edit
         @recipe = Recipe.find_by_id(params[:id])
-    end 
+        redirect_to recipes_path if !@recipe || @recipe.user != current_user
+      end
 
     
-    def show 
-        @recipe = Recipe.find_by_id(params[:id])
-        redirect_to recipes_path if !@recipe 
+
+     def update 
+        @recipe = Recipe.find_by(id: params[:id])    
+          redirect_to recipe_path if !@recipe || @recipe.user != current_user
+          if @recipe.update(recipe_params)
+            redirect_to recipe_path(@recipe)    
+          else
+           render :edit
+          end
+        end
+
+        def show 
+            @recipe = Recipe.find_by_id(params[:id])
+            redirect_to recipes_path if !@recipe     
+        end
     
-end
+
 
     def destroy
         Recipe.find(params[:id]).destroy
