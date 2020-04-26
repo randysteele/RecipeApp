@@ -34,6 +34,7 @@ class IngredientsController < ApplicationController
 
   def edit
     @ingredient = Ingredient.find_by_id(params[:id])   
+    
   end
 
  
@@ -49,8 +50,9 @@ class IngredientsController < ApplicationController
 
     def destroy
       Ingredient.find(params[:id]).destroy
-      redirect_to recipe_path
-  end
+       redirect_to recipe_path
+      end
+end
 
 private
 

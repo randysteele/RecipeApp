@@ -1,4 +1,4 @@
-<h3> Edit Ingredient </h3>
+<h3> Edit Ingredient <%= @ingredient.name%>  </h3>
 
     <%= form_for @ingredient do |f| %>            
         
@@ -14,6 +14,10 @@
       
         <%= f.submit %><br><br>
       <% end %>
+
+      <%= form_tag ingredient_path(@ingredient.id), method: "delete" do %>
+  <%= submit_tag "Delete #{@ingredient.name}" %>
+<% end %>
 
 
 
