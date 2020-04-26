@@ -5,4 +5,6 @@ class User < ApplicationRecord
     has_many :commented_recipes, through: :comments
     validates :email, uniqueness: true 
     has_secure_password    
+
+    
 end

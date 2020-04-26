@@ -1,4 +1,6 @@
 Rails.application.routes.draw do  
+
+  get '/recipes/most-comments' => 'recipes#most_comments'
   
   resources :recipes do
     resources :comments

@@ -4,6 +4,6 @@
 <% end %>
 <ul>
 <% @recipes.each do |r| %>
-    <li><%= link_to r.title, recipe_path(r) %> </li>
+    <li><%= link_to r.title, recipe_path(r) %> - <%= r.comments.size%></li>
     <% end %>
     </ul>

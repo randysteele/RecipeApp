@@ -15,7 +15,6 @@ class RecipesController < ApplicationController
          if @recipe.save
              redirect_to recipes_path
          else
-            binding.pry
          render :new
          end
     end
@@ -23,10 +22,10 @@ class RecipesController < ApplicationController
 
     def index 
         if params[:user_id] && @user = User.find_by_id(params[:id])
-          @recipes = @user.recipes
+          @recipes = @user.recipes.alpha
         else
             @error = "Sorry, that receipe doesn't exist" if params[:id]
-            @recipes = Recipe.alpha
+            @recipes = Recipe.most_comments
         end
     end
 
@@ -47,6 +46,11 @@ end
         Recipe.find(params[:id]).destroy
         redirect_to recipe_url
     end
+
+    def most_comments
+        @recipes = Recipe.most_comments
+    end
+
 
   
     def recipe_params
