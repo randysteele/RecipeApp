@@ -1,5 +1,4 @@
 class Recipe < ApplicationRecord
-    belongs_to :user
     has_many :ingredients      
     has_many :comments
     has_many :users, through: :comments
@@ -11,6 +10,8 @@ class Recipe < ApplicationRecord
     scope :alpha, -> { order(:title) }
 
     scope :most_comments, -> { joins(:comments).group('recipes.id').order('count(recipes.id) DESC') }
+
+    # scope :search, -> { where(:title LIKE '%' params[:recipe]})
     
     
     def is_title_case

@@ -3,4 +3,4 @@
 <% @recipes.each do |r| %>
     <li><%= link_to r.title, recipe_path(r) %> - Number of comments: <%= r.comments.size%></li>
     <% end %>
-    </ul>
+    

@@ -23,7 +23,6 @@ class IngredientsController < ApplicationController
     if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
        @ingredients = @recipe.ingredients
     else
-      @error = "Sorry, that doesn't exist" if params[:recipe_id]
       @ingredients = Ingredient.all    
     end
   end
@@ -51,8 +50,8 @@ class IngredientsController < ApplicationController
     def destroy
       Ingredient.find(params[:id]).destroy
        redirect_to recipe_path
-      end
-end
+    end
+
 
 private
 
@@ -60,8 +59,3 @@ private
          params.require(:ingredient).permit(:name, :quantity, :measurement, :recipe_id)
    end
 end
-
-
- 
-
-  

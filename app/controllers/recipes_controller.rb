@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
      before_action :redirect_if_not_logged_in    
 
     def new
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+        if current_user
           @recipe = @user.recipes.build
           @recipe.ingredients.build(name: "Ingredient Name")
         else
@@ -19,21 +19,18 @@ class RecipesController < ApplicationController
          end
     end
 
-
     def index 
-        if params[:user_id] && @user = User.find_by_id(params[:id])
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
           @recipes = @user.recipes.alpha
         else
-            @error = "Sorry, that receipe doesn't exist" if params[:id]
             @recipes = Recipe.alpha.all
         end
     end
 
-
     def edit
         @recipe = Recipe.find_by_id(params[:id])
         redirect_to recipes_path if !@recipe || @recipe.user != current_user
-      end
+    end
 
     
 
@@ -45,7 +42,7 @@ class RecipesController < ApplicationController
           else
            render :edit
           end
-        end
+    end
 
         def show 
             @recipe = Recipe.find_by_id(params[:id])
@@ -56,7 +53,6 @@ class RecipesController < ApplicationController
 
     def destroy
         Recipe.find(params[:id]).destroy
-        flash[:message] = "Successfully Deleted"
         redirect_to recipe_url
     end
 
@@ -65,7 +61,8 @@ class RecipesController < ApplicationController
     end
 
 
-  
+
+  private
     def recipe_params
         params.require(:recipe).permit(:title, :content,  ingredients_attributes: [:quantity, :name, :measurement]
           )

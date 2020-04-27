@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-    
-    helper_method :display_recipes
 
     def new 
         @user = User.new 
@@ -17,8 +15,7 @@ class UsersController < ApplicationController
     end
 
     def show 
-        @user = User.find_by_id(params[:id])
-        @recipe = Recipe.find_by_id(params[:id])        
+        @user = User.find_by_id(params[:id])      
     end
 
     def edit
@@ -26,9 +23,9 @@ class UsersController < ApplicationController
     end
 
   private 
-  def user_params
-    params.require(:user).permit(:username, :email, :password)
-  end
+    def user_params
+        params.require(:user).permit(:username, :email, :password)
+    end
 
 
 
