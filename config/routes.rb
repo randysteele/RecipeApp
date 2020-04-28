@@ -1,7 +1,6 @@
 Rails.application.routes.draw do  
 
   get '/recipes/most-comments' => 'recipes#most_comments'
-  get '/search' => 'recipes#search'
   
   resources :recipes do
     resources :comments

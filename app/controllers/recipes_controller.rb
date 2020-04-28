@@ -8,22 +8,25 @@ class RecipesController < ApplicationController
         else
           @recipe = Recipe.new
         end
+      
     end
 
     def create   
+      if params[:user_id] && @user = User.find_by_id(params[:user_id])
         @recipe = current_user.recipes.build(recipe_params) 
          if @recipe.save
              redirect_to recipes_path
          else
          render :new
          end
+        end
     end
 
     def index 
       if params[:user_id] && @user = User.find_by_id(params[:user_id])
         @recipes = @user.recipes.alpha
       else
-          @recipes = Recipe.alpha.all
+          @recipes = Recipe.alpha
       end
       @recipes = @recipes.search(params[:q].downcase) if params[:q] && !params[:q].empty?
   end
@@ -63,7 +66,5 @@ class RecipesController < ApplicationController
     def recipe_params
         params.require(:recipe).permit(:title, :content, ingredients_attributes: [:quantity, :name, :measurement]
         )
-    end
-
-    
+    end    
 end
