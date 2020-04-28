@@ -20,18 +20,18 @@ class RecipesController < ApplicationController
     end
 
     def index 
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
-          @recipes = @user.recipes.alpha
-        else
-            @recipes = Recipe.alpha.all
-        end
-    end
-
+      if params[:user_id] && @user = User.find_by_id(params[:user_id])
+        @recipes = @user.recipes.alpha
+      else
+          @recipes = Recipe.alpha.all
+      end
+      @recipes = @recipes.search(params[:q].downcase) if params[:q] && !params[:q].empty?
+  end
+ 
     def edit
         @recipe = Recipe.find_by_id(params[:id])
         redirect_to recipes_path if !@recipe || @recipe.user != current_user
     end
-
     
 
      def update 
@@ -48,7 +48,6 @@ class RecipesController < ApplicationController
             @recipe = Recipe.find_by_id(params[:id])
             redirect_to recipes_path if !@recipe     
         end
-    
 
 
     def destroy
@@ -61,10 +60,16 @@ class RecipesController < ApplicationController
     end
 
 
+    # def self.search(params)
+    #   Recipe.where("LOWER(recipes.title) LIKE :term OR LOWER(recipes.ingredient) LIKE :term", term: "%#{params}%")
+    # end  
+
 
   private
     def recipe_params
-        params.require(:recipe).permit(:title, :content,  ingredients_attributes: [:quantity, :name, :measurement]
-          )
+        params.require(:recipe).permit(:title, :content, ingredients_attributes: [:quantity, :name, :measurement]
+        )
     end
+
+    
 end

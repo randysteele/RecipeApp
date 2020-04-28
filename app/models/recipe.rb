@@ -1,17 +1,18 @@
 class Recipe < ApplicationRecord
+    belongs_to :user
     has_many :ingredients      
     has_many :comments
     has_many :users, through: :comments
     validates :title, presence: true 
     validate :is_title_case
-    accepts_nested_attributes_for :ingredients 
-         
+
+    accepts_nested_attributes_for :ingredients    
+
     before_save :make_title_case
+
     scope :alpha, -> { order(:title) }
 
     scope :most_comments, -> { joins(:comments).group('recipes.id').order('count(recipes.id) DESC') }
-
-    # scope :search, -> { where(:title LIKE '%' params[:recipe]})
     
     
     def is_title_case
@@ -23,4 +24,8 @@ class Recipe < ApplicationRecord
     def make_title_case
         self.title = self.title.titlecase
     end 
+
+    def self.search(params)
+        left_joins(:comments).where("LOWER(recipes.title) LIKE :term OR LOWER(recipes.content) LIKE :term OR LOWER(comments.content) LIKE :term", term: "%#{params}%")
+    end
 end

@@ -1,7 +1,16 @@
+<h4> Search by Recipe </h4>
+<%= form_tag(recipes_path, method: :get) do %>
+<%= text_field_tag(:q) %>
+<%= submit_tag ("Search Recipes") %>
+<% end %> 
+
+
 <h1> All Recipes </h1>
 <% if @recipes.count == 0 %>
 <h1><%= "Sorry, there are no recipes to see right now" %></h1>
 <% end %>
+
+
 <ul>
 <% @recipes.each do |r| %>
     <li><%= link_to r.title, recipe_path(r)%></li>
