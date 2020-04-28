@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
      before_action :redirect_if_not_logged_in    
 
     def new
-        if current_user
+      if params[:user_id] && @user = User.find_by_id(params[:user_id])
           @recipe = @user.recipes.build
           @recipe.ingredients.build(name: "Ingredient Name")
         else
@@ -58,12 +58,6 @@ class RecipesController < ApplicationController
     def most_comments
         @recipes = Recipe.most_comments
     end
-
-
-    # def self.search(params)
-    #   Recipe.where("LOWER(recipes.title) LIKE :term OR LOWER(recipes.ingredient) LIKE :term", term: "%#{params}%")
-    # end  
-
 
   private
     def recipe_params
