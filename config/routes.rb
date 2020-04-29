@@ -1,6 +1,7 @@
 Rails.application.routes.draw do  
 
   get '/recipes/most-comments' => 'recipes#most_comments'
+  get '/recipes/high-num-ingredients' => 'recipes#high_num_ingredients'
   
   resources :recipes do
     resources :comments

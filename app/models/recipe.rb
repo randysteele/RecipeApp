@@ -13,6 +13,7 @@ class Recipe < ApplicationRecord
     scope :alpha, -> { order(:title) }
 
     scope :most_comments, -> { joins(:comments).group('recipes.id').order('count(recipes.id) DESC') }
+
     
     
     def is_title_case
@@ -27,5 +28,15 @@ class Recipe < ApplicationRecord
 
     def self.search(params)
         left_joins(:comments).where("LOWER(recipes.title) LIKE :term OR LOWER(recipes.content) LIKE :term OR LOWER(comments.content) LIKE :term", term: "%#{params}%")
+    end
+
+    def self.high_num_ingredients
+        something = []
+        Recipe.all.each do |recipe|  
+           if recipe.ingredients.count > 5 
+            something << recipe
+           end
+        end
+        something
     end
 end

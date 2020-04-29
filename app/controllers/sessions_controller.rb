@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
     def create 
         user = User.find_by(username: params[:user][:email])
+        # Fix this issue of a user not being able to login
         if user && user.authenticate(params[:user][:password])
         session[:user_id] = :user_id
         redirect_to user_path(user)

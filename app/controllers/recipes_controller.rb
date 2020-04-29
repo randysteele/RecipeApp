@@ -7,18 +7,15 @@ class RecipesController < ApplicationController
           @recipe.ingredients.build(name: "Ingredient Name")
         else
           @recipe = Recipe.new
-        end
-      
+        end      
     end
 
     def create   
-      if params[:user_id] && @user = User.find_by_id(params[:user_id])
         @recipe = current_user.recipes.build(recipe_params) 
          if @recipe.save
              redirect_to recipes_path
          else
          render :new
-         end
         end
     end
 
@@ -29,7 +26,7 @@ class RecipesController < ApplicationController
           @recipes = Recipe.alpha
       end
       @recipes = @recipes.search(params[:q].downcase) if params[:q] && !params[:q].empty?
-  end
+    end
  
     def edit
         @recipe = Recipe.find_by_id(params[:id])
@@ -60,6 +57,11 @@ class RecipesController < ApplicationController
 
     def most_comments
         @recipes = Recipe.most_comments
+    end
+
+    def high_num_ingredients
+      @recipes = Recipe.high_num_ingredients
+      render :index
     end
 
   private
