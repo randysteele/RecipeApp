@@ -5,15 +5,6 @@ Rails.application.routes.draw do
 
   get '/recipes/most-comments' => 'recipes#most_comments'
   get '/recipes/high-num-ingredients' => 'recipes#high_num_ingredients'
-
-  get '/signup' => 'users#new'
-  post '/signup' => 'users#create'
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'    
-  get '/logout' => 'sessions#destroy'
-  delete '/logout' => 'sessions#destroy'
-  get '/auth/:provider/callback', to: 'sessions#google'
-
   
   resources :recipes do
     resources :comments
@@ -29,6 +20,13 @@ Rails.application.routes.draw do
   end  
   resources :users 
      
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
+  get '/logout' => 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'    
+  get '/auth/:provider/callback', to: 'sessions#google'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
