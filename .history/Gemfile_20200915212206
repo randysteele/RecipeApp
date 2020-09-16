@@ -27,6 +27,12 @@ gem 'jbuilder', '~> 2.7'
  gem 'dotenv-rails'
  gem 'omniauth-google-oauth2'
 #  gem 'titleize', '~> 1.4', '>= 1.4.1'
+gem 'middleman'
+gem 'middleman-cli'
+#gem 'middleman-server'
+gem 'middleman-blog'
+gem 'middleman-core'
+gem 'middleman-blog'
 
 
  

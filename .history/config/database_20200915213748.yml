@@ -19,8 +19,8 @@ development:
   encoding: unicode
   database: recipeapp_development
   pool: 5
-  # username: brendan
-  # password:
+  username: randy
+  password:
   timeout: 5000
  
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -49,6 +49,6 @@ test:
   encoding: unicode
   database: recipeapp
   pool: 5
-  # username: brendan
-  # password:
+  username: randy
+  password:
   timeout: 5000
