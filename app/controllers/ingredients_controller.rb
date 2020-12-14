@@ -7,21 +7,21 @@ class IngredientsController < ApplicationController
         @ingredient = @recipe.ingredients.build
     else
         @ingredient = Ingredient.new
-       end
+    end
   end
 
   def create
-     @ingredient = current_user.ingredients.build(ingredient_params)
-       if @ingredient.save
-        redirect_to recipes_path
+    @ingredient = current_user.ingredients.build(ingredient_params)
+    if @ingredient.save
+     redirect_to recipes_path
     else
-        render :new
+      render :new
     end
   end
 
   def index
     if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
-       @ingredients = @recipe.ingredients
+    @ingredients = @recipe.ingredients
     else
       @ingredients = Ingredient.all    
     end
@@ -32,10 +32,8 @@ class IngredientsController < ApplicationController
   end
 
   def edit
-    @ingredient = Ingredient.find_by_id(params[:id])   
-    
+    @ingredient = Ingredient.find_by_id(params[:id])       
   end
-
  
   def update 
     @ingredient = Ingredient.find_by(id: params[:id])    
@@ -45,17 +43,16 @@ class IngredientsController < ApplicationController
       else
        render :edit
       end
-    end
+  end
 
     def destroy
       Ingredient.find(params[:id]).destroy
-       redirect_to recipe_path
+      redirect_to recipe_path
     end
-
 
 private
 
    def ingredient_params
-         params.require(:ingredient).permit(:name, :quantity, :measurement, :recipe_id)
+     params.require(:ingredient).permit(:name, :quantity, :measurement, :recipe_id)
    end
 end

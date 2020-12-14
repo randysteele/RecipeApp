@@ -18,24 +18,24 @@ class Recipe < ApplicationRecord
     
     def is_title_case
         if title.split.any?{|w|w[0].upcase != w[0]}
-          errors.add(:title, "must be in Title Case, please capitalize the first letter of each word")
+        errors.add(:title, "must be in Title Case, please capitalize the first letter of each word")
         end
     end
      
     def make_title_case
-        self.title = self.title.titlecase
+      self.title = self.title.titlecase
     end 
 
     def self.search(params)
-        left_joins(:comments).where("LOWER(recipes.title) LIKE :term OR LOWER(recipes.content) LIKE :term OR LOWER(comments.content) LIKE :term", term: "%#{params}%")
+      left_joins(:comments).where("LOWER(recipes.title) LIKE :term OR LOWER(recipes.content) LIKE :term OR LOWER(comments.content) LIKE :term", term: "%#{params}%")
     end
 
     def self.high_num_ingredients
         something = []
         Recipe.all.each do |recipe|  
-           if recipe.ingredients.count > 5 
-            something << recipe
-           end
+        if recipe.ingredients.count > 5 
+          something << recipe
+        end
         end
         something
     end

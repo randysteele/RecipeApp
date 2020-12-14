@@ -11,10 +11,10 @@
   
     <%= f.submit "Edit Comment" %>
   
-  <% end %>
+<% end %>
 
   <%= link_to "Delete Comment", edit_comment_path(@comment)%>
 
-        <%= form_tag comment_path(@comment.id), method: "delete" do %>
+  <%= form_tag comment_path(@comment.id), method: "delete" do %>
   <%= submit_tag "Delete #{@comment.content}" %>
 <% end %>

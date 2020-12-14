@@ -6,7 +6,7 @@ class Ingredient < ApplicationRecord
 
   def is_title_case
     if name.split.any?{|w|w[0].upcase != w[0]}
-      errors.add(:name, "Must be in title case, (please capitalize the first letter of each word)")
+     errors.add(:name, "Must be in title case, (please capitalize the first letter of each word)")
     end
   end
  

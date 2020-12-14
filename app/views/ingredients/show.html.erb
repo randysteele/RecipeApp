@@ -6,7 +6,7 @@
 <%= link_to "Back to Recipe", recipe_path(@ingredient.recipe_id)%>
 
 <%= form_tag ingredient_path(@ingredient.id), method: "delete" do %>
-  <%= submit_tag "Delete #{@ingredient.name}" %>
+<%= submit_tag "Delete #{@ingredient.name}" %>
 <% end %>
 
 

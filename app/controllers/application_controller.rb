@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-   @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
   end
 
   def logged_in?
@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_not_logged_in
-     redirect_to '/' if !logged_in?
+    redirect_to '/' if !logged_in?
   end
 end

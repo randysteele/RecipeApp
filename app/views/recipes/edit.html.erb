@@ -10,8 +10,8 @@
 
       
         <%= f.submit %><br><br>
-      <% end %>
-    <%= form_tag recipe_path(@recipe.id), method: "delete" do %>
+<% end %>
+  <%= form_tag recipe_path(@recipe.id), method: "delete" do %>
   <%= submit_tag "Delete #{@recipe.title}" %>
 <% end %>
      

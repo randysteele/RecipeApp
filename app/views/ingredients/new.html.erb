@@ -4,28 +4,21 @@
 <%= form_for @ingredient do |f| %>
 
  <% if !@ingredient.recipes %>
-  <%= f.label :recipe %>
-  <%= f.collection_select :recipe_id, Recipe.all, :id, :title %>
-<% else %>
-    <%= f.hidden_field :recipe_id %>
+ <%= f.label :recipe %>
+ <%= f.collection_select :recipe_id, Recipe.all, :id, :title %>
+ <% else %>
+ <%= f.hidden_field :recipe_id %>
 <% end %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
 
   <%= f.label :quantity%>
- <%= f.number_field :quantity%>
+  <%= f.number_field :quantity%>
 
- <%= f.label :measurement%>
- <%= f.text_field :measurement%>
+  <%= f.label :measurement%>
+  <%= f.text_field :measurement%>
 
 <%= f.submit%>
-<%end%>
-
-
-  
-
-     
-
-     
+<%end%>    
      
