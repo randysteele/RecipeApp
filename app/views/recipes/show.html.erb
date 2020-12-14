@@ -5,8 +5,8 @@
 <h5>Posted By: <%= link_to @recipe.user.username, user_path(@recipe.user)%></h5>
 <h4 class="green-text">Here is what you'll need:</h4><ol><% @recipe.ingredients.each do |i| %><br>
   <li>  Ingredient: <%= link_to i.name, edit_recipe_ingredient_path(@recipe.id, i) %><br> Quantity:  <%=i.quantity %> <br> Measurement: <%= i.measurement %> <br> </li> 
-    <% end %>
-    </ol> </p>
+<% end %>
+</ol> </p>
 
   
 
@@ -21,6 +21,3 @@
 <%= form_tag recipe_path(@recipe.id), method: "delete" do %>
   <%= submit_tag "Delete #{@recipe.title}" %>
 <% end %>
- 
-
-
