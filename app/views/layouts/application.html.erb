@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
+<%
+=begin%>
+ <!DOCTYPE html>
     <body>
     <nav class="blue">
-      <div class ="container">   
+      <div class ="container">  
+      <a href="/" class="brand-logo">Home</a>
+      <ul class ="right">
    <% if logged_in? %> 
      <%= link_to "Home", user_path(current_user) %> |
       <%=link_to "Add a new Recipe", new_user_recipe_path(current_user) %> |
@@ -23,17 +25,62 @@
   
   
 <html>
- <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <head>
-    <title>RecipeApp</title>
+<!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+   <title>RecipeApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
   </head>
     <%= yield %>
   </body>
    
   <body>  
-</html>
+</html> 
+<%
+=end%>
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+
+<title>Recipe App</title>
+
+<meta name="viewport" content="width=device-width, initial-scae=1.0"/>
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
+</head>
+<body>
+<nav>
+<ul>
+<% if logged_in? %>
+<li><a href="/logout">Logout</a></li>
+<% else %>
+  <li><%= link_to "Signup Here!", signup_path %></li>
+  <li><%= link_to "Login Here!", login_path %> /li>
+  <li><%= link_to "Login with Google!", '/auth/google_oauth2'%></li>
+
+<% end %>
+</ul>
+</nav>
+
+<div class="wrapper">
+
+<%= yield %>
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
+
