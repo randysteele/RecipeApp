@@ -58,10 +58,16 @@
 </head>
 <body>
 <nav class="purple">
-<ul class="right">
+  <div class="container">
+  <a href="/" class="brand-logo">Home</a>
+  <ul class="right">
 <% if logged_in? %>
 <li><a href="/logout">Logout</a></li>
-<% else %>
+<li><%= link_to "See All Comments", recipe_comments_path(@recipe)%></li>
+<li><%= link_to "Add a new comment", new_recipe_comment_path(@recipe)%></li>
+<li><%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe)%></li> 
+
+<% else !logged_in? %>
   <li><%= link_to "Signup Here!", signup_path %></li>
   <li><%= link_to "Login Here!", login_path %> /li>
   <li><%= link_to "Login with Google!", '/auth/google_oauth2'%></li>
@@ -69,6 +75,8 @@
 <% end %>
 </ul>
 </nav>
+
+  </div>
 
 <div class="wrapper">
 
