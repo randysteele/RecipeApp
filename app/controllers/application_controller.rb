@@ -2,6 +2,14 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?, :redirect_if_not_logged_in
 
+  def home
+  get "/" do
+
+    erb :home, layout: :home  
+  end
+end
+
+
   private
   def current_user
     @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
