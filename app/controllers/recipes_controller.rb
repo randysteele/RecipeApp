@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
      before_action :redirect_if_not_logged_in    
 
+
     def new
       if params[:user_id] && @user = User.find_by_id(params[:user_id])
         @recipe = @user.recipes.build
