@@ -58,13 +58,13 @@
 </head>
 <body>
 <title>Recipe App</title>
-<nav class="purple">
+<nav class="light-blue">
   <div class="container">
   <a href="/users/:user_id/recipes" class="brand-logo" >Home</a>
   <ul class="right">
-<% if logged_in? %>
-  <li><%=link_to "All Recipes", recipes_path %></li>
-  <li><%=link_to "Add a new Recipe", new_user_recipe_path(current_user) %></li>
+<% if logged_in?%>
+  <li><%=link_to "All Recipes", recipes_path%></li>
+  <li><%=link_to "Add a new Recipe", new_user_recipe_path(current_user)%></li>
 
   
 <li><%= link_to "Most Commented", recipes_most_comments_path%></li>
@@ -73,14 +73,13 @@
 
 <% else !logged_in? %>
   <li><%= link_to "Signup Here!", signup_path %></li>
-  <li><%= link_to "Login Here!", login_path %> /li>
+  <li><%= link_to "Login Here!", login_path %> </li>
   <li><%= link_to "Login with Google!", '/auth/google_oauth2'%></li>
 
 <% end %>
 </ul>
 </nav>
-
-  </div>
+ </div>
 
 <div class="container">
 
@@ -93,3 +92,4 @@
 <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+<link rel="stylesheet" href="/stylesheets/main.css">
