@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+
+<title class="left">Recipe App</title>
+
+<meta name="viewport" content="width=device-width, initial-scae=1.0"/>
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
+</head>
+<body>
+<title>Recipe App</title>
+<nav class="light-blue">
+  <div class="container">
+  <a href="/users/:user_id/recipes" class="brand-logo" >Home</a>
+  <ul class="right">
+<% if logged_in?%>
+  <li><%=link_to "All Recipes", recipes_path%></li>
+  <li><%=link_to "Add a new Recipe", new_user_recipe_path(current_user)%></li>
+
+  
+<li><%= link_to "Most Commented", recipes_most_comments_path%></li>
+<li><a href="/logout">Logout</a></li>
+
+
+<% else !logged_in? %>
+  <li><%= link_to "Signup Here!", signup_path %></li>
+  <li><%= link_to "Login Here!", login_path %> </li>
+  <li><%= link_to "Login with Google!", '/auth/google_oauth2'%></li>
+
+<% end %>
+</ul>
+</nav>
+ </div>
+
+<div class="container">
+
+<%= yield %>
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<link rel="stylesheet" href="/stylesheets/main.css">
