@@ -1,13 +1,19 @@
 <h1> Login </h1>
 
 <%=  form_for :user do |f|   %>
-
-    <%= f.label :username %>:
+<div class="input-field">
     <%= f.text_field :username %><br><br>
-    <%= f.label :email %>:
+    <%= f.label :username %>
+</div>
+<div class="input-field">
     <%= f.email_field :email %><br><br>
-    <%= f.label :password %>:
+    <%= f.label :email %>
+</div>
+<div class="input-field">
     <%= f.password_field :password %><br><br>
-    <%= f.submit "Login" %>
+    <%= f.label :password %>
+
+    <input tpye="submit" value="Login" class="btn light-blue">
+</div>
 
     <% end %> 
