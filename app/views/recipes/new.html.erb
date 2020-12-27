@@ -4,18 +4,24 @@
 
 
 <%= form_for @recipe do |f| %>
+<div class="input-field">
+
         <%= f.label "Title of your Recipe" %>
         <%= f.text_field :title%><br/>
-      
+</div>   
+<div class="input-field">
         <%= f.fields_for :ingredients do |i| %><br>
           <%= i.label :name%>
           <%= i.text_field :name %><br/><br>
-      
+</div> 
+<div class="input-field"> 
           <%= i.label :quantity %>
           <%= i.number_field :quantity %><br/><br>
-
+</div>
+<div class="input-field">
           <%= i.label :measurement %>
           <%= i.text_field :measurement %><br/><br>       
+</div>
         <% end %>
                  
 
@@ -24,8 +30,8 @@
 
 
        
-        <%= f.submit %><br><br>
-        <% end %>
+        <input type="submit" value="Create Recipe" class="btn light-blue">
+        <% end %><br><br>
 
-       <%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe.ingredients)%> |<br><br>     
+       <%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe.ingredients)%><br><br>     
       
