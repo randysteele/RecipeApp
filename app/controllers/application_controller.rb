@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?, :redirect_if_not_logged_in
+  layout  "home"
 
 
 

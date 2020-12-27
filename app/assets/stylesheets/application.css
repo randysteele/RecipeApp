@@ -14,4 +14,10 @@
  *= require_self
  */
 
+ body.homepage {
+    background-color: purple;
+    background: url('https://makeyourmeals.com/wp-content/uploads/2018/08/pizza-rolls.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
