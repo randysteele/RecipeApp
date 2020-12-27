@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
     def new
       if params[:user_id] && @user = User.find_by_id(params[:user_id])
         @recipe = @user.recipes.build
-        @recipe.ingredients.build(name: "Ingredient Name")
+        @recipe.ingredients.build
       else
         @recipe = Recipe.new
       end      
