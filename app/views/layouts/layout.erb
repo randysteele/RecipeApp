@@ -9,8 +9,9 @@
 <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
 </head>
-<body class="orange accent-2">
+<body class="purple ">
 <title>Recipe App</title>
+<div class="navbar-fixed">
 <nav class="light-blue">
   <div class="container">
   <a href="/users/:user_id/recipes" class="brand-logo" >Home</a>
@@ -33,6 +34,7 @@
 <% end %>
 </ul>
 </nav>
+</div>
  </div>
 
 <div class="container">
@@ -46,17 +48,20 @@
 <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<nav class="light-blue">
-  <div class="container">
-  <a href="/users/:user_id/recipes" class="brand-logo" >Home</a>
-  <ul class="right">
-<% if logged_in?%>
-  <li><%=link_to "All Recipes", recipes_path%></li>
-  <li><%=link_to "Add a new Recipe", new_user_recipe_path(current_user)%></li>
 
+<div class="footer-fixed">
+<footer class="page-footer">
+<div class="container">
   
-<li><%= link_to "Most Commented", recipes_most_comments_path%></li>
-<li><a href="/logout">Logout</a></li>
+<h3><a href="/users/:user_id/recipes" class="brand-logo" >Home</a></h3>
+  
+  <ul class="center">
+<% if logged_in?%>
+<div class="container">
+<h5><%=link_to "All Recipes", recipes_path%> |
+<%=link_to "Add a new Recipe", new_user_recipe_path(current_user)%> |
+<%= link_to "Most Commented", recipes_most_comments_path%> |
+<a href="/logout">Logout</a></h5>
 
 
 <% else !logged_in? %>
@@ -67,5 +72,11 @@
 
 <% end %>
 </ul>
-</nav>
+</footer>
+</div>
  </div>
+ </div>
+
+
+
+
