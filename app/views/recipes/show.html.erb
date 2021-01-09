@@ -11,13 +11,17 @@
   
 
 <h4 class="blue-text">Directions: <%= @recipe.content %></h4><br>
-
-
-<%= link_to "See All Comments", recipe_comments_path(@recipe)%><br>
-<%= link_to "Add a new comment", new_recipe_comment_path(@recipe)%><br>  
-<%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe)%> |<br><br> 
-
-
 <%= form_tag recipe_path(@recipe.id), method: "delete" do %>
-  <%= submit_tag "Delete #{@recipe.title}" %>
+<%= submit_tag "Delete #{@recipe.title}" %><br><br><br>
+
 <% end %>
+
+<%
+=begin%>
+ <%= link_to "See All Comments", recipe_comments_path(@recipe)%><br>
+<%= link_to "Add a new comment", new_recipe_comment_path(@recipe)%><br>  
+<%= link_to "Add another ingredient", new_recipe_ingredient_path(@recipe)%><br><br>  
+<%
+=end%>
+
+
